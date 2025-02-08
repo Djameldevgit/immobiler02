@@ -64,7 +64,7 @@ export const createPostPendiente = ({ postData ,wilaya, commune, marca, modelo, 
 export const getPostsPendientesss = (token) => async (dispatch) => {
     try {
         dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-        const res = await getDataAPI('getpostspendientes', token);
+        const res = await getDataAPI('posts', token);
       
         dispatch({
             type: POSTAPROVE_TYPES.GET_POSTS_PENDIENTES,

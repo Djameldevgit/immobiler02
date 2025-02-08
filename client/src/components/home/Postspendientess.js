@@ -14,6 +14,10 @@ import PostsdeunUsuario from './PostsdeunUsuario';
 
 const Postspendientess = () => {
   const { homePostsAprove, auth , usercountposts} = useSelector((state) => state); 
+ 
+  console.log("homePostsAprove:", homePostsAprove); // Verifica si posts existe
+  
+
   const user = auth
  
   const dispatch = useDispatch();

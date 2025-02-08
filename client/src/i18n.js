@@ -30,12 +30,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         "login_now": "Login Now" ?
 
           //LOGIN
-          "realestate" : "Real Estate",
-        "email": "Email Address",
+         
         "email_help": "We'll never share your email with anyone else.",
-        "password": "Password",
-        "show": "Show",
-        "hide": "Hide",
+        
+      
         "login": "Login",
         "no_account": "You don't have an account?",
         "register_now": "Register Now",
@@ -92,21 +90,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         "Mes notifications": "My notifications",
 
 
-
-        "La información de contacto no esta autorizada por el proprietarios del articulo.": "The contact information is not authorized by the owners of the article",
-        "Los comentarios no están autorizados por el propietario del post.": "Comments are not authorized by the owner of the post",
-        "Contact & Coordonnés": "Contact & Coordinates",
-        " Description de l'annonce": "Description of the announcement",
-        "Automobiles": "Automobiles",
-        "Specification": "Specification",
-        "llamar al contacto": "Call contact",
-        "Comments": "Comments",
-        "Write your description or comment here.": "Write your description or comment here.",
-
-
-
-        "Voir les détails": "View Details",
-
+  
 
 
         "comments": "comments",
@@ -135,14 +119,14 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
 
 
-        "profile": "Profile",
+       
         "Dark mode": "Dark mode",
         "Light mode": "Light mode",
         "logout": "Logout",
         "Post": "Post",
         "Create Post": "Create a post",
-        "Hide": "Hide",
-        "Show": "Show",
+        
+        
 
         "Loading": "Loading",
 
@@ -166,7 +150,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         "Password": "Password",
         "Confirm Password": "Confirm Password",
 
-        "Email address": "Email address",
+      
         "Mobile": "Mobile",
         "Address": "Address",
         "Websit": "Websit",
@@ -201,7 +185,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
         },
         //REGISTER
-        "realestate": "Immobilier",
+     
         "username": "Nom d'utilisateur",
         "email": "Adresse e-mail",
         "password": "Mot de passe",
@@ -217,9 +201,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         "realestate": "Immobilier",
         "email": "Adresse e-mail",
         "email_help": "Nous ne partagerons jamais votre e-mail avec qui que ce soit.",
-        "password": "Mot de passe",
-        "show": "Afficher",
-        "hide": "Cacher",
+        
+     
         "login": "Se connecter",
         "no_account": "Vous n'avez pas de compte?",
         "register_now": "Inscrivez-vous maintenant",
@@ -240,7 +223,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
 
 
-        "realestate": "Immobilier",
+  
         "post": "Publier une annonces",
         "usermanagement": "Gestion des utilisateurs",
         "complaints": "Plaintes",
@@ -252,56 +235,14 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         "light_mode": "Mode clair",
         "dark_mode": "Mode sombre",
 
-        "profile": "Profil",
+      
         "logout": "Déconnexion",
 
-        "Suggestions for you": "Suggestions pour vous",
-        "welcome to Tassili Share your post with us": "Bienvenue à Tasili! Partage tes idées avec nous",
-        "share your post with us": "Partagez votre publication avec nous",
-        "No post": "Pas d'article",
-        "busquedahome": "Aucun résultat trouvé avec cette recherche, essayez avec d'autres mots clés",
-        "Rechercheavance": "Recherche avancée",
-        "tipodetranzaccion": "Type de transaction",
+    
 
-
-        "voireprofile": "Voir le profil",
-        "publieunpost": "Publier un article",
-        "comunicarconeladiminstrador": "Administrateur",
-        "recherche": "Recherche",
-
-        "Mes notifications": "Mes notifications",
-        "Vente": "Vente",
-        "Locacion": "Location",
-
-        "comments": "commentaires",
-        "likes": "likes",
-        "Copy Link": "Copier le lien",
-        "Denunciar": "Signaler",
-        "Edit automobile": "Modifier la voiture",
-        "Aprove automobile": "Approuver la voiture",
-        "See more comments": "Voir plus de commentaires",
-        "Hide comments": "Masquer les commentaires",
-        "update": "mettre à jour",
-        "cancel": "annuler",
-        "Edit": "Modifier",
-        "Remove": "Supprimer",
-        "Contact & Coordonnés": "Contact et coordonnées",
-        "Description de l'annonce": "Description de l'annonce",
-        "Options de voiture": "Options de voiture",
-        "Description": "Description",
-        "Comments": "Commentaires",
-        "Automobile": "Automobile",
-
-        "Questions & Réponses": "Questions & Réponses",
-        'Annuler': 'Annuler',
-        'Répondre': 'Répondre',
-
-
-
-        "Voir les détails": "Voir les détails",
-
-
-
+ 
+ 
+ 
 
 
 
@@ -318,7 +259,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         "Dark mode": "Mode sombre",
         "Light mode": "Mode éclairé",
 
-        "post": "Publier",
+        
         "Create Post": "Créer une publication",
         "real estate": "immobilier",
         "Loading": "Loading",
@@ -330,23 +271,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
         "Hide": "Cacher",
         "Show": "Montrer",
-        "Already have an account?": "Vous avez déjà un compte?",
-        "Login Now": "Connecte maintenant",
-        "Register Now": "Inscrivez-vous maintenant",
-
-        "Loginn": "Connexion",
-        "You dont have an account?": "Vous n'avez pas de compte ?",
-        "Info": "Vos informations sont cryptées et stockées en toute sécurité.",
-
-        "editar perfile": "Change de profil",
-        "Close": "Fermer",
-        "Change": "Changement",
-        "Full Name": "Nom et prénom",
-        "User Name": "Nom d'utilisateur",
+       
 
         "Password": "Mot de passe",
         "Confirm Password": "Confirmez le mot de passe",
-        "Email address": "Courrier électronique",
+        
         "Mobile": "Tfl Mobile",
         "Address": "Adresse",
         "Websit": "Site Web",
@@ -436,7 +365,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         "tipodetranzaccion": "نوع المعاملة",
 
 
-        "voireprofile": "الصفحة الشخصية",
+        
         "publieunpost": "نشر منشور",
         "comunicarconeladiminstrador": "التواصل مع المسؤولين",
         "recherche": "بحث",

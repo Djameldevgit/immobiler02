@@ -1,10 +1,11 @@
 import Carousel from '../../Carousel'
-import { Link, useHistory,useLocation } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment'
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes'
 import { deletePost } from '../../../redux/actions/postAction'
 import { BASE_URL } from '../../../utils/config'
+import { aprovarPostPendiente } from '../../../redux/actions/postaproveAction'
 
 
 const CardPost = ({ post }) => {
@@ -23,7 +24,14 @@ const CardPost = ({ post }) => {
       return history.push("/")
     }
   }
+  const handleAprovePost = () => {
+    const confirmAction = window.confirm("¿Deseas aprobar esta agencias?")
+    if (confirmAction) {
+      dispatch(aprovarPostPendiente(post, 'aprovado', auth));
+      return history.push("/pages/administracion/sala");
+    }
 
+  }
   const handleCopyLink = () => {
     navigator.clipboard.writeText(`${BASE_URL}/post/${post._id}`)
   }
@@ -47,17 +55,21 @@ const CardPost = ({ post }) => {
             </div>
 
             <div className="post-menu">
-              {
-                auth.user._id === post.user._id &&
+               
+
                 <>
+                  <div className="dropdown-item" onClick={handleAprovePost}>
+                    <span className="material-icons">create</span> aprove post
+                  </div>
+
                   <div className="dropdown-item" onClick={handleEditPost}>
                     <span className="material-icons">create</span> Edit Post
                   </div>
                   <div className="dropdown-item" onClick={handleDeletePost} >
-                    <span className="material-icons">delete_outline</span> Remove Post
+                    <span className="material-icons">delete_outline</span> Remove Post 
                   </div>
                 </>
-              }
+             
               <div className="dropdown-item" onClick={handleCopyLink}>
                 <span className="material-icons">content_copy</span> Copy Link
               </div>
