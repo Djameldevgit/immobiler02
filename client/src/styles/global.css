@@ -82,6 +82,8 @@ img {
 @import url("./description.css");
 @import url("./detailpost.css");
 @import url("./footer.css");
+@import url("./categoriesform.css");
+@import url("./language.css");
 /* --------- Responsive ------ */
 @media (max-width: 766px){
   .header .navbar .logo{

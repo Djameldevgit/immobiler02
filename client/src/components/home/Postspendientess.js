@@ -3,33 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoadIcon from '../../images/loading.gif';
 import LoadMoreBtn from '../LoadMoreBtn';
 import { getDataAPI } from '../../utils/fetchData';
-import Carousel from '../Carousel';
- 
 import { POSTAPROVE_TYPES } from '../../redux/actions/postaproveAction';
-
-import CardHeaderaprove from './post_card/CardHeaderaprove';
-import PostsdeunUsuario from './PostsdeunUsuario';
- import { getTotalPostsCountUser } from '../../redux/actions/postAction';
-
+import { getTotalPostsCountUser } from '../../redux/actions/postAction';
+ 
 
 const Postspendientess = () => {
-  const { homePostsAprove, auth , usercountposts} = useSelector((state) => state); 
- 
-  console.log("homePostsAprove:", homePostsAprove); // Verifica si posts existe
-  
-
-  const user = auth
- 
+  const { homePostsAprove, auth, usercountposts } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [load, setLoad] = useState(false);
   const [postsPendientes, setPostsPendientes] = useState([]);
-  useEffect(() => {
-    if (user) {
-        dispatch(getTotalPostsCountUser({auth,user})); // Llamamos a la acción para obtener la cuenta de posts
-    }
-}, [dispatch, user]);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  // Filtrar los posts que están pendientes
+  useEffect(() => {
+    if (auth) {
+      dispatch(getTotalPostsCountUser({ auth }));
+    }
+  }, [dispatch, auth]);
+
   useEffect(() => {
     const postspedientes = homePostsAprove.posts.filter((p) => p.estado === 'pendiente');
     setPostsPendientes(postspedientes);
@@ -38,73 +28,115 @@ const Postspendientess = () => {
   const handleLoadMore = async () => {
     setLoad(true);
     const res = await getDataAPI(`posts?limit=${homePostsAprove.page * 9}`, auth.token);
-
     dispatch({
       type: POSTAPROVE_TYPES.GET_POSTS_PENDIENTES,
       payload: { ...res.data, page: homePostsAprove.page + 1 },
     });
-
     setLoad(false);
+  };
+
+  const handleApprovePost = (postId) => {
+    console.log("Aprobando post:", postId);
+  };
+
+  const handleDeletePost = (postId) => {
+    console.log("Eliminando post:", postId);
   };
 
   return (
     <div className="container mt-4">
-      
-    
-      <h5 className="mb-3">Total de posts pendientes: {postsPendientes.length}</h5>
+      <h5 className="mb-3 text-center">Total de posts pendientes: {postsPendientes.length}</h5>
+
       <div className="table-responsive">
         <table className="table table-bordered table-hover">
-          <thead className="thead-dark">
-    
-          <tr>
-            <th>#</th>
-            <th>Imagen</th>
-            <td>Total posts</td>
-            <th>Títre</th>
-            <th>Nom</th>
-            <th>Estado</th>
-            <th>Fecha de Creación</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {postsPendientes.length > 0 ? (
-            postsPendientes.map((post, index) => (
-              <tr key={post._id}>
-                <td>{index + 1}</td>
-                <td className="carousel-td">
-                  {post.images.length > 0 ? (
-                    <Carousel images={post.images} id={post._id} />
-                  ) : (
-                    <span>No hay imágenes</span>
-                  )}
-                </td>
-                <td> {usercountposts}</td>  
-                <td>{post.content}</td>
-              <td>{post.user.username}</td> 
-                <td>{post.estado}</td>
-                <td>{new Date(post.createdAt).toLocaleDateString()}</td>
-                <td><CardHeaderaprove post={post} /></td>
-              </tr>
-            ))
-          ) : (
+          <thead className="thead-dark text-center">
             <tr>
-              <td colSpan="7" className="text-center">No hay posts pendientes</td>
+              <th>#</th>
+              <th>Imagen</th>
+              <th className="d-none d-md-table-cell">Total posts</th>
+              <th>Título</th>
+              <th>Usuario</th>
+              <th>Estado</th>
+              <th className="d-none d-md-table-cell">Fecha</th>
+              <th>Acciones</th>
             </tr>
-          )}
-        </tbody>
+          </thead>
+          <tbody>
+            {postsPendientes.length > 0 ? (
+              postsPendientes.map((post, index) => (
+                <tr key={post._id} className="align-middle text-center">
+                  <td>{index + 1}</td>
+                  <td>
+                    {post.images.length > 0 ? (
+                      <img
+                        src={post.images[0].url}
+                        alt="Post"
+                        className="img-thumbnail"
+                        style={{ width: "60px", height: "60px", objectFit: "cover", cursor: "pointer" }}
+                        onClick={() => setSelectedImage(post.images[0].url)}
+                        data-bs-toggle="modal"
+                        data-bs-target="#imageModal"
+                      />
+                    ) : (
+                      <span>No hay imágenes</span>
+                    )}
+                  </td>
+                  <td className="d-none d-md-table-cell">{usercountposts}</td>
+                  <td className="text-truncate" style={{ maxWidth: "150px" }}>{post.content}</td>
+                  <td>{post.user.username}</td>
+                  <td>
+                    <span className={`badge ${post.estado === 'pendiente' ? 'bg-warning text-dark' : 'bg-success'}`}>
+                      {post.estado}
+                    </span>
+                  </td>
+                  <td className="d-none d-md-table-cell">{new Date(post.createdAt).toLocaleDateString()}</td>
+                  <td>
+                    <div className="dropdown">
+                      <button className="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Opciones
+                      </button>
+                      <ul className="dropdown-menu">
+                        <li>
+                          <button className="dropdown-item text-success" onClick={() => handleApprovePost(post._id)}>
+                            <i className="material-icons">check_circle</i> Aprobar
+                          </button>
+                        </li>
+                        <li>
+                          <button className="dropdown-item text-danger" onClick={() => handleDeletePost(post._id)}>
+                            <i className="material-icons">delete_outline</i> Eliminar
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="8" className="text-center">No hay posts pendientes</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
 
+        {load && <img src={LoadIcon} alt="loading" className="d-block mx-auto" />}
+        <LoadMoreBtn result={homePostsAprove.result} page={homePostsAprove.page} load={load} handleLoadMore={handleLoadMore} />
+      </div>
 
-      </table>
-
-
-
-      {load && <img src={LoadIcon} alt="loading" className="d-block mx-auto" />}
- 
-
-      <LoadMoreBtn result={homePostsAprove.result} page={homePostsAprove.page} load={load} handleLoadMore={handleLoadMore} />
-
-       </div>
+      {/* MODAL PARA MOSTRAR LA IMAGEN EN GRANDE */}
+      <div className="modal fade" id="imageModal" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Vista Previa</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div className="modal-body text-center">
+              {selectedImage && <img src={selectedImage} alt="Preview" className="img-fluid" />}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

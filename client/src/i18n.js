@@ -16,6 +16,15 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
           // ...
         },
 
+//CATEGORIES FORM PARA LA PUBLICACION
+"vente": "Sale",
+"location": "Location",
+"location_vacances": "Holiday Rental",
+"echange": "Exchange",
+"cherche_location": "Looking for Rental",
+"cherche_achat": "Looking for Purchase",
+
+
         //REGISTER
 
         "realestate": "Real Estate",
@@ -184,6 +193,17 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
           "hh": "il y a {{count}} heures",
 
         },
+        //CATEGORIES FORM PARA PUBLICACION
+
+        "vente": "Vente",
+        "location": "Location",
+        "location_vacances": "Location Vacances",
+        "echange": "Échange",
+        "cherche_location": "Cherche Location",
+        "cherche_achat": "Cherche Achat"?
+
+
+
         //REGISTER
      
         "username": "Nom d'utilisateur",
@@ -297,6 +317,20 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
     },
     ar: {
       translation: {
+//CATEGORIES FORM PARA LA PUBLICACION
+ 
+  "vente": "بيع",
+  "location": "موقع",
+  "location_vacances": "إيجار عطلة",
+  "echange": "تبادل",
+  "cherche_location": "البحث عن الإيجار",
+  "cherche_achat": "البحث عن الشراء"?
+ 
+
+
+
+
+
         "realestate": "العقارات",
         "username": "اسم المستخدم",
         "email": "البريد الإلكتروني",

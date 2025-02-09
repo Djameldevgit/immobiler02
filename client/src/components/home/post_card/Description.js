@@ -1,37 +1,61 @@
-import React from 'react';
-
+import React from "react";
+ 
 const Description = ({ post }) => {
-
   return (
-    <div className="description">
-
-      <div className="body1">
-        {post.attributes && Object.keys(post.attributes).length > 0 ? (
-          Object.entries(post.attributes).map(([key, value]) => (
-            <li key={key}>
-              {key}: {value}
-            </li>
-          ))
-        ) : (
-          <li>No hay atributos disponibles</li>
-        )}
+    <div className="description-container">
+      {/* Sección de atributos del post */}
+      <div className="attributes">
+        <h4>Atributos del Post</h4>
+        <ul>
+          {post.attributes && Object.keys(post.attributes).length > 0 ? (
+            Object.entries(post.attributes).map(([key, value]) => (
+              <li key={key}>
+                <strong>{key}:</strong> {value}
+              </li>
+            ))
+          ) : (
+            <li>No hay atributos disponibles</li>
+          )}
+        </ul>
       </div>
 
-
-      <div className="body2">
-        <div ><i className="fas fa-comment"></i> Commentairesvalue={post.comments.length || '0'}  </div>
-        <div ><i className="fas fa-thumbs-up"></i> Likesvalue={post.likes.length || '0'} </div>
-        <div ><i className="fas fa-map"></i> Communevalue={post.commune || 'Non spécifié'} </div>
-        <div ><i className="fas fa-envelope"></i> Emailvalue={post.email || 'Non spécifié'} </div>
-        <div ><i className="fas fa-user-circle"></i> Informacion del vendedorvalue={post.informacion || 'Non spécifié'} </div>
-        <div ><i className="fas fa-comments"></i> Permitir comentariosvalue={post.comentarios || 'Non spécifié'} </div>
-        <div ><i className="fas fa-eye"></i> Contador de visitasvalue={post.contadordevisitas || 'Non spécifié'} </div>
-        <div ><i className="fas fa-clock"></i> Duracion del anunciovalue={post.duraciondelanuncio || 'Non spécifié'} </div>
+      {/* Sección de información del post */}
+      <div className="post-info">
+        <h4>Detalles del Post</h4>
+        <div className="info-item">
+          <i className="fas fa-comment"></i>
+          <span>Comentarios: {post.comments.length || "0"}</span>
+        </div>
+        <div className="info-item">
+          <i className="fas fa-thumbs-up"></i>
+          <span>Likes: {post.likes.length || "0"}</span>
+        </div>
+        <div className="info-item">
+          <i className="fas fa-map"></i>
+          <span>Ubicación: {post.commune || "No especificado"}</span>
+        </div>
+        <div className="info-item">
+          <i className="fas fa-envelope"></i>
+          <span>Email: {post.email || "No especificado"}</span>
+        </div>
+        <div className="info-item">
+          <i className="fas fa-user-circle"></i>
+          <span>Vendedor: {post.informacion || "No especificado"}</span>
+        </div>
+        <div className="info-item">
+          <i className="fas fa-comments"></i>
+          <span>Permitir comentarios: {post.comentarios || "No especificado"}</span>
+        </div>
+        <div className="info-item">
+          <i className="fas fa-eye"></i>
+          <span>Visitas: {post.contadordevisitas || "No especificado"}</span>
+        </div>
+        <div className="info-item">
+          <i className="fas fa-clock"></i>
+          <span>Duración del anuncio: {post.duraciondelanuncio || "No especificado"}</span>
+        </div>
       </div>
-
-
     </div>
-
   );
 };
 

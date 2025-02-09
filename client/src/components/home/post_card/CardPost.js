@@ -15,7 +15,7 @@ const CardPost = ({ post }) => {
   const history = useHistory()
 
   const handleEditPost = () => {
-    dispatch({ type: GLOBALTYPES.STATUS, payload: { ...post, onEdit: true } })
+    dispatch({ type: GLOBALTYPES.VENTE, payload: { ...post, onEdit: true } })
   }
 
   const handleDeletePost = () => {
@@ -47,36 +47,37 @@ const CardPost = ({ post }) => {
           <div className='subcategory'>{post.subCategory}</div>
           <div className='title'>title{post.title}</div>
 
+
           <div className="nav-item dropdown">
-            <div className="nav-item dropdown">
-              <span className="material-icons" id="moreLink" data-toggle="dropdown">
-                more_horiz
-              </span>
-            </div>
+  <span
+    className="material-icons"
+    id="moreLink"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    more_horiz
+  </span>
 
-            <div className="post-menu">
-               
+  <div className="dropdown-menu dropdown-menu-start" aria-labelledby="moreLink">
+    <div className="dropdown-item" onClick={handleAprovePost}>
+      <span className="material-icons">check_circle</span> Aprove Post
+    </div>
+    <div className="dropdown-item" onClick={handleEditPost}>
+      <span className="material-icons">create</span> Edit Post
+    </div>
+    <div className="dropdown-item" onClick={handleDeletePost}>
+      <span className="material-icons">delete_outline</span> Remove Post
+    </div>
+    <div className="dropdown-item" onClick={handleCopyLink}>
+      <span className="material-icons">content_copy</span> Copy Link
+    </div>
+  </div>
+</div>
 
-                <>
-                  <div className="dropdown-item" onClick={handleAprovePost}>
-                    <span className="material-icons">create</span> aprove post
-                  </div>
-
-                  <div className="dropdown-item" onClick={handleEditPost}>
-                    <span className="material-icons">create</span> Edit Post
-                  </div>
-                  <div className="dropdown-item" onClick={handleDeletePost} >
-                    <span className="material-icons">delete_outline</span> Remove Post 
-                  </div>
-                </>
-             
-              <div className="dropdown-item" onClick={handleCopyLink}>
-                <span className="material-icons">content_copy</span> Copy Link
-              </div>
-            </div>
-          </div>
 
         </div>
+
 
 
 

@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { useTranslation } from 'react-i18next';
 import * as languageActions from '../redux/actions/languageAction';
-import { Link } from 'react-router-dom';
- 
+
 function LanguageSelector() {
   const dispatch = useDispatch();
   const { auth, languageReducer } = useSelector(state => state);
   const { t } = useTranslation();
   const [cookies, setCookie] = useCookies(['language']);
 
-  const handleLanguageChange = useCallback((language) => {
+  const handleLanguageChange = useCallback((language, e) => {
+    if (e) e.stopPropagation(); // Evita que el evento siga propagándose
+
     switch (language) {
       case 'en':
         dispatch(languageActions.inglishLanguage(language, auth));
@@ -42,18 +43,28 @@ function LanguageSelector() {
 
   return (
     <div className='language-component'>
-    <Link to="/" className="dropdown-item" onClick={() => handleLanguageChange('ar')}>
-      {t('Arabe', { lng: languageReducer.language })}
-    </Link>
-    <Link to="#" className="dropdown-item" onClick={() => handleLanguageChange('fr')}>
-      {t('frances', { lng: languageReducer.language })}
-    </Link>
-    <Link to="#" className="dropdown-item" onClick={() => handleLanguageChange('en')}>
-      {t('ingles', { lng: languageReducer.language })}
-    </Link>
-  </div>
-  
+      <div
+        className="dropdown-item"
+        onClick={(e) => handleLanguageChange('ar', e)}
+      >
+        {t('Arabe', { lng: languageReducer.language })}
+      </div>
+      <div
+        className="dropdown-item"
+        onClick={(e) => handleLanguageChange('fr', e)}
+      >
+        {t('frances', { lng: languageReducer.language })}
+      </div>
+      <div
+        className="dropdown-item"
+        onClick={(e) => handleLanguageChange('en', e)}
+      >
+        {t('ingles', { lng: languageReducer.language })}
+      </div>
+    </div>
   );
 }
 
 export default LanguageSelector;
+
+

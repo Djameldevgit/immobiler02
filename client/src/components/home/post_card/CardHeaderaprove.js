@@ -16,7 +16,7 @@ const CardPostaprove = ({ post }) => {
   const history = useHistory()
 
   const handleEditPost = () => {
-    dispatch({ type: GLOBALTYPES.STATUS, payload: { ...post, onEdit: true } })
+    dispatch({ type: GLOBALTYPES.VENTE, payload: { ...post, onEdit: true } })
   }
 
   const handleDeletePost = () => {
